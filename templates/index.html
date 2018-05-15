@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Redis Cluter Health</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../static/ajax.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h1>Redis Cluster Health</h1>
+    <p>Connected to: {{ redis_server_address }}</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Fetch a Key</h3>
+            <form class="form-horizontal" name="fetchForm">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="fetchkey">Key:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fetchkey" placeholder="Enter Key" name="fetchkey">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" class="btn btn-default" onclick="getKey()">Fetch</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="fetchedvalue">Value:</label>
+                    <div class="col-sm-10">
+                        <!--<p class="form-control-static" id="fetchedvalue" name="fetchedvalue"></p>-->
+                        <textarea type="text" class="form-control" id="fetchedvalue" name="fetchkey"
+                                  disabled></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="fetchedvalue">Time:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" id="fetchedtime" name="fetchedtime"></p>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-sm-4">
+            <h3>Write a Key</h3>
+            <form class="form-horizontal">
+                <fieldset disabled>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="writekey">Key:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="writekey" placeholder="Enter Key"
+                                   name="writekey">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="writevalue">Value:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="writevalue" placeholder="Enter Value"
+                                   name="writevalue">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Write</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h3>Performance Test</h3>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="perf_description">Details:</label>
+                    <div class="col-sm-10">
+                        <p class="form-text text-muted" id="perf_description">
+                            This is a placeholder for test description
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-default" onclick="performTest()">Initiate</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="perf_result">Status:</label>
+                    <div class="col-sm-10">
+                        <p class="form-text text-muted" id="perf_result">Performance Status</p>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

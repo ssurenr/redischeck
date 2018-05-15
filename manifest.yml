@@ -1,0 +1,8 @@
+---
+applications:
+- name: redis-cluster-health
+  memory: 512M
+  instances: 2
+  #command: python server.py
+  command: NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program python server.py
+  buildpack: https://github.com/cloudfoundry/python-buildpack#v1.6.2
